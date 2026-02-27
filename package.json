@@ -1,0 +1,13 @@
+{
+  "name": "webcrafter-site",
+  "version": "1.0.0",
+  "description": "Webcrafter AI Landing Page",
+  "main": "index.html",
+  "scripts": {
+    "dev": "serve .",
+    "start": "serve ."
+  },
+  "dependencies": {
+    "serve": "^14.2.1"
+  }
+}
