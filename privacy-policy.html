@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Nudge</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#0A0A0F',
+                        surface: '#14141E',
+                        surfaceHighlight: '#1F1F2E',
+                        indigo: '#6C63FF',
+                        violet: '#A78BFA',
+                        grey: '#A0A0B0',
+                        white: '#FFFFFF',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0A0A0F;
+            color: #FFFFFF;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0A0A0F;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1F1F2E;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6C63FF;
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #6C63FF, #A78BFA);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .prose h2 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: #FFFFFF;
+        }
+
+        .prose p, .prose ul {
+            color: #A0A0B0;
+            margin-bottom: 1.25rem;
+            line-height: 1.75;
+        }
+        
+        .prose ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+        }
+
+        .prose li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-indigo selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 border-b border-white/5 bg-navy/80 backdrop-blur-md transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-2 group">
+                <img src="logo.png" alt="Nudge Logo" class="w-8 h-8 rounded-lg shadow-[0_0_15px_-3px_rgba(108,99,255,0.4)] group-hover:scale-105 transition-transform">
+                <span class="font-display font-bold text-xl tracking-tight">Nudge</span>
+            </a>
+
+            <!-- Links (Desktop) -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-grey">
+                <a href="index.html#how-it-works" class="hover:text-white transition-colors">How it works</a>
+                <a href="index.html#integrations" class="hover:text-white transition-colors">Integrations</a>
+            </div>
+
+            <!-- CTA -->
+            <a href="#" class="hidden sm:flex group items-center gap-2 bg-gradient-to-r from-indigo to-violet hover:opacity-90 transition-opacity px-5 py-2.5 rounded-full font-medium text-sm shadow-[0_0_20px_-5px_rgba(108,99,255,0.4)]">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg" alt="Chrome" class="w-4 h-4 bg-white rounded-full p-[1px]">
+                Add to Chrome
+            </a>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <main class="pt-32 pb-24 relative min-h-screen">
+        <!-- Background Glow -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-indigo/5 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
+
+        <div class="max-w-3xl mx-auto px-6">
+            <h1 class="font-display font-bold text-4xl mb-4">Privacy Policy</h1>
+            <p class="text-grey mb-12">Last updated: <span id="date"></span></p>
+
+            <div class="prose max-w-none">
+                <p>At Nudge, we respect your privacy and are committed to protecting it. This Privacy Policy explains our practices regarding the collection, use, and disclosure of information that we receive through our Google Chrome extension.</p>
+
+                <h2>1. Information We Collect</h2>
+                <p>Nudge is designed to work locally within your browser. <strong>We do not harvest, read, or sell your emails or personal messages.</strong></p>
+                <ul>
+                    <li><strong>Local Data:</strong> To set reminders, the extension stores basic metadata locally in your browser (e.g., thread URLs, designated follow-up times, and basic notification context).</li>
+                    <li><strong>Sync Data:</strong> If you are signed into Chrome sync, Chrome syncs your settings and reminders across your devices according to Google's Privacy Policy. </li>
+                    <li><strong>Analytics:</strong> We may collect anonymous, aggregated usage data (such as how many reminders are created daily) to improve extension performance, but this is never tied to personally identifiable information.</li>
+                </ul>
+
+                <h2>2. How We Use Information</h2>
+                <p>We use the locally stored data exclusively to provide the core functionality of the extension—reminding you to follow up on specific conversations at the times you designate. We do not use your information for advertising or lead generation.</p>
+
+                <h2>3. Third-Party Access</h2>
+                <p>Nudge interacts with third-party websites (like Gmail, LinkedIn, and WhatsApp) strictly to generate the direct links to your conversations. We do not transmit your data to external servers, nor do we sell, trade, or rent your personal information to third parties.</p>
+
+                <h2>4. Data Security</h2>
+                <p>Because your reminder data is stored locally in your browser storage or via Chrome Sync, it is secured by Google's native browser security mechanisms. We implement best practices in our extension permissions, ensuring we only request access to the specific URLs required to provide our service.</p>
+
+                <h2>5. Changes to This Privacy Policy</h2>
+                <p>We may update this Privacy Policy from time to time. We will notify you of any changes by updating the "Last updated" date of this Privacy Policy and, depending on the significance of the changes, we may provide a more prominent notice.</p>
+
+                <h2>6. Contact Us</h2>
+                <p>If you have any questions or concerns about this Privacy Policy or our practices, please contact us at <a href="mailto:support@nudge-extension.com" class="text-indigo hover:text-violet transition-colors">support@nudge-extension.com</a>.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 py-12 bg-navy">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="flex items-center gap-2">
+                <img src="logo.png" alt="Nudge Logo" class="w-6 h-6 rounded shadow-md shadow-indigo/20">
+                <div>
+                    <span class="font-display font-bold text-lg">Nudge</span>
+                    <p class="text-xs text-grey">One tap. Back in the conversation.</p>
+                </div>
+            </div>
+
+            <div class="flex gap-8 text-sm text-grey">
+                <a href="privacy-policy.html" class="text-white">Privacy Policy</a>
+                <a href="index.html#how-it-works" class="hover:text-white transition-colors">How it works</a>
+                <a href="#" class="hover:text-white transition-colors">Contact</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="#" class="text-grey hover:text-white transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                <a href="#" class="text-grey hover:text-white transition-colors"><i data-lucide="chrome" class="w-5 h-5"></i></a>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 mt-8 text-center md:text-left">
+            <p class="text-xs text-grey/40">© 2026 Nudge. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        lucide.createIcons();
+        document.getElementById('date').textContent = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+    </script>
+</body>
+</html>
