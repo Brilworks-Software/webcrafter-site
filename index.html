@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nudge — One tap. Back in the conversation.</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#0A0A0F',
+                        surface: '#14141E',
+                        surfaceHighlight: '#1F1F2E',
+                        indigo: '#6C63FF',
+                        violet: '#A78BFA',
+                        grey: '#A0A0B0',
+                        white: '#FFFFFF',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 6s ease-in-out 3s infinite',
+                        'pulse-glow': 'pulseGlow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '0.5' },
+                            '50%': { opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0A0A0F;
+            color: #FFFFFF;
+            overflow-x: hidden;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0A0A0F;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1F1F2E;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6C63FF;
+        }
+
+        /* Gradient Text */
+        .text-gradient {
+            background: linear-gradient(to right, #6C63FF, #A78BFA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Glow effects */
+        .glow-bg {
+            background: radial-gradient(circle at center, rgba(108, 99, 255, 0.15) 0%, rgba(10, 10, 15, 0) 70%);
+        }
+        
+        .glow-element {
+            box-shadow: 0 0 40px -10px rgba(108, 99, 255, 0.3);
+        }
+
+        /* 3D Tilt */
+        .tilt-card {
+            transform: perspective(1000px) rotateY(-5deg) rotateX(2deg);
+            transition: transform 0.5s ease;
+        }
+        .tilt-card:hover {
+            transform: perspective(1000px) rotateY(-2deg) rotateX(1deg);
+        }
+
+        /* Scroll Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .step-line {
+            background-image: linear-gradient(to right, #333 50%, rgba(255, 255, 255, 0) 0%);
+            background-position: bottom;
+            background-size: 10px 1px;
+            background-repeat: repeat-x;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-indigo selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 border-b border-white/5 bg-navy/80 backdrop-blur-md transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-gradient-to-br from-indigo to-violet rounded-lg flex items-center justify-center">
+                    <i data-lucide="zap" class="w-5 h-5 text-white fill-white"></i>
+                </div>
+                <span class="font-display font-bold text-xl tracking-tight">Nudge</span>
+            </div>
+
+            <!-- Links (Desktop) -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-grey">
+                <a href="#how-it-works" class="hover:text-white transition-colors">How it works</a>
+                <a href="#integrations" class="hover:text-white transition-colors">Integrations</a>
+                <a href="#pricing" class="hover:text-white transition-colors">Pricing</a>
+            </div>
+
+            <!-- CTA -->
+            <a href="#" class="hidden sm:flex group items-center gap-2 bg-gradient-to-r from-indigo to-violet hover:opacity-90 transition-opacity px-5 py-2.5 rounded-full font-medium text-sm shadow-[0_0_20px_-5px_rgba(108,99,255,0.4)]">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg" alt="Chrome" class="w-4 h-4 brightness-0 invert">
+                Add to Chrome
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <!-- Background Glow -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-indigo/10 rounded-full blur-[120px] -z-10"></div>
+
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+            
+            <!-- Hero Content -->
+            <div class="space-y-8 reveal active">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-indigo/30 bg-indigo/10 text-indigo text-xs font-semibold tracking-wide uppercase">
+                    <span>Follow-up, finally solved</span>
+                </div>
+                
+                <h1 class="font-display font-bold text-5xl sm:text-6xl lg:text-7xl leading-[1.1]">
+                    One tap.<br>
+                    Back in the <span class="text-gradient">conversation.</span>
+                </h1>
+                
+                <p class="text-lg text-grey leading-relaxed max-w-lg">
+                    Nudge is a Chrome extension that saves follow-ups from Gmail, LinkedIn, and WhatsApp — and reminds you exactly when to act.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                    <a href="#" class="flex items-center justify-center gap-3 bg-gradient-to-r from-indigo to-violet px-8 py-4 rounded-full font-semibold text-white shadow-lg shadow-indigo/25 hover:shadow-indigo/40 hover:-translate-y-0.5 transition-all">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg" alt="Chrome" class="w-5 h-5 brightness-0 invert">
+                        Add to Chrome — It's Free
+                    </a>
+                    <a href="#how-it-works" class="flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-white/20 text-white font-medium hover:bg-white/5 transition-colors">
+                        See how it works
+                    </a>
+                </div>
+
+                <div class="flex items-center gap-2 text-xs text-grey">
+                    <div class="flex text-yellow-400">
+                        <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                    </div>
+                    <span>2 min install · No account needed · Works where you work</span>
+                </div>
+            </div>
+
+            <!-- Hero Visual (CSS Mockup) -->
+            <div class="relative lg:h-[600px] flex items-center justify-center reveal active delay-100">
+                
+                <!-- Main Browser Window -->
+                <div class="relative w-full max-w-lg bg-surface border border-white/10 rounded-xl shadow-2xl animate-float tilt-card z-10">
+                    <!-- Browser Header -->
+                    <div class="h-8 bg-surfaceHighlight rounded-t-xl border-b border-white/5 flex items-center px-4 gap-2">
+                        <div class="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
+                        <div class="mx-auto w-1/2 h-4 bg-navy/50 rounded-md"></div>
+                    </div>
+                    <!-- Browser Content (Fake Email Inbox) -->
+                    <div class="p-6 space-y-4 bg-navy">
+                        <div class="flex items-center justify-between border-b border-white/5 pb-4">
+                            <h3 class="font-display text-xl font-semibold">Inbox</h3>
+                            <div class="w-8 h-8 bg-surfaceHighlight rounded-full"></div>
+                        </div>
+                        <!-- Email Item 1 (Highlighted) -->
+                        <div class="p-4 bg-surfaceHighlight/50 border border-indigo/30 rounded-lg flex gap-4 items-start relative overflow-hidden group">
+                            <div class="absolute inset-0 bg-indigo/5 pointer-events-none"></div>
+                            <div class="w-10 h-10 bg-indigo rounded-full flex items-center justify-center text-sm font-bold">JD</div>
+                            <div class="flex-1 space-y-1">
+                                <div class="flex justify-between">
+                                    <span class="font-semibold text-sm">John Doe</span>
+                                    <span class="text-xs text-grey">10:42 AM</span>
+                                </div>
+                                <p class="text-xs text-grey font-medium">Project Proposal Follow-up</p>
+                                <p class="text-xs text-grey/60">Hey, just checking in on the proposal I sent last week...</p>
+                            </div>
+                        </div>
+                        <!-- Email Item 2 -->
+                        <div class="p-4 border border-white/5 rounded-lg flex gap-4 items-start opacity-50">
+                            <div class="w-10 h-10 bg-surfaceHighlight rounded-full"></div>
+                            <div class="flex-1 space-y-2">
+                                <div class="h-3 bg-surfaceHighlight w-24 rounded"></div>
+                                <div class="h-2 bg-surfaceHighlight w-full rounded"></div>
+                            </div>
+                        </div>
+                        <!-- Email Item 3 -->
+                        <div class="p-4 border border-white/5 rounded-lg flex gap-4 items-start opacity-50">
+                            <div class="w-10 h-10 bg-surfaceHighlight rounded-full"></div>
+                            <div class="flex-1 space-y-2">
+                                <div class="h-3 bg-surfaceHighlight w-24 rounded"></div>
+                                <div class="h-2 bg-surfaceHighlight w-full rounded"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Extension Popup Overlay -->
+                    <div class="absolute -right-4 top-20 w-64 bg-surface border border-indigo/30 rounded-lg shadow-[0_10px_40px_-10px_rgba(108,99,255,0.4)] p-4 animate-float-delayed z-20">
+                        <div class="flex items-center gap-2 mb-3">
+                            <div class="w-6 h-6 bg-gradient-to-br from-indigo to-violet rounded flex items-center justify-center">
+                                <i data-lucide="zap" class="w-3 h-3 text-white fill-white"></i>
+                            </div>
+                            <span class="text-sm font-bold">Nudge Saved</span>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="text-xs text-grey">Remind me to follow up in:</div>
+                            <div class="flex gap-2">
+                                <div class="px-3 py-1 bg-indigo text-white text-xs rounded border border-indigo">3 days</div>
+                                <div class="px-3 py-1 bg-surfaceHighlight text-grey text-xs rounded border border-white/10">1 week</div>
+                            </div>
+                            <button class="w-full py-1.5 bg-white text-navy text-xs font-bold rounded mt-1">Set Reminder</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phone Notification (Bottom Left) -->
+                <div class="absolute -bottom-8 -left-4 sm:left-10 w-72 bg-surface/90 backdrop-blur border border-white/10 rounded-2xl p-4 shadow-2xl animate-float z-30">
+                    <div class="flex gap-3">
+                        <div class="w-10 h-10 bg-indigo rounded-lg flex items-center justify-center">
+                            <i data-lucide="zap" class="w-5 h-5 text-white fill-white"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs font-semibold text-grey">Nudge · Now</div>
+                            <div class="text-sm font-bold text-white">Time to follow up with Rahul 👋</div>
+                            <div class="text-xs text-grey mt-0.5">Project Sync - Gmail</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="py-24 bg-surfaceHighlight/30 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <h2 class="font-display font-bold text-3xl md:text-4xl mb-4">You meant to follow up. <span class="text-white/40">Life happened.</span></h2>
+                <p class="text-grey text-lg">Every day, conversations go cold across your inboxes. Not because you didn't care — because nothing reminded you.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="p-8 rounded-2xl bg-navy border border-white/5 relative overflow-hidden group reveal">
+                    <div class="absolute top-4 right-4 w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                    <div class="w-12 h-12 bg-surfaceHighlight rounded-lg flex items-center justify-center mb-6 group-hover:bg-red-500/10 transition-colors">
+                        <i data-lucide="mail" class="w-6 h-6 text-grey group-hover:text-red-400"></i>
+                    </div>
+                    <p class="text-lg font-medium text-white/80 italic">"Sent a proposal. Never followed up. Lost the client."</p>
+                    <p class="mt-4 text-sm text-grey font-mono uppercase tracking-widest">Gmail</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="p-8 rounded-2xl bg-navy border border-white/5 relative overflow-hidden group reveal delay-100">
+                    <div class="absolute top-4 right-4 w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                    <div class="w-12 h-12 bg-surfaceHighlight rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-500/10 transition-colors">
+                        <i data-lucide="linkedin" class="w-6 h-6 text-grey group-hover:text-blue-400"></i>
+                    </div>
+                    <p class="text-lg font-medium text-white/80 italic">"Great intro call. Forgot to reconnect. Opportunity gone."</p>
+                    <p class="mt-4 text-sm text-grey font-mono uppercase tracking-widest">LinkedIn</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="p-8 rounded-2xl bg-navy border border-white/5 relative overflow-hidden group reveal delay-200">
+                    <div class="absolute top-4 right-4 w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                    <div class="w-12 h-12 bg-surfaceHighlight rounded-lg flex items-center justify-center mb-6 group-hover:bg-green-500/10 transition-colors">
+                        <i data-lucide="message-circle" class="w-6 h-6 text-grey group-hover:text-green-400"></i>
+                    </div>
+                    <p class="text-lg font-medium text-white/80 italic">"Said you'd check back in a week. Three weeks passed."</p>
+                    <p class="mt-4 text-sm text-grey font-mono uppercase tracking-widest">WhatsApp</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20 reveal">
+                <h2 class="font-display font-bold text-4xl mb-4">Simpler than you think.</h2>
+            </div>
+
+            <div class="relative grid md:grid-cols-3 gap-12">
+                <!-- Connecting Line (Desktop) -->
+                <div class="hidden md:block absolute top-24 left-0 w-full h-px border-t-2 border-dotted border-white/10 -z-10"></div>
+
+                <!-- Step 1 -->
+                <div class="text-center group reveal">
+                    <div class="w-16 h-16 mx-auto bg-surface border border-indigo/20 rounded-2xl flex items-center justify-center shadow-[0_0_30px_-10px_rgba(108,99,255,0.3)] mb-8 relative bg-navy z-10">
+                        <i data-lucide="eye" class="w-8 h-8 text-indigo"></i>
+                        <div class="absolute -top-2 -right-2 w-6 h-6 bg-surfaceHighlight rounded-full border border-white/10 flex items-center justify-center text-xs font-bold">1</div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">See it</h3>
+                    <p class="text-grey text-sm mb-6 px-4">Spot a message worth following up on in Gmail, LinkedIn, or WhatsApp.</p>
+                    <!-- Small UI Preview -->
+                    <div class="bg-surfaceHighlight rounded-lg p-3 border border-white/5 mx-auto w-4/5 h-24 relative overflow-hidden">
+                        <div class="w-full h-2 bg-white/10 rounded mb-2"></div>
+                        <div class="w-2/3 h-2 bg-white/10 rounded"></div>
+                        <div class="absolute bottom-2 right-2 w-4 h-4 rounded-full bg-indigo/20 border border-indigo/50"></div>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="text-center group reveal delay-100">
+                    <div class="w-16 h-16 mx-auto bg-surface border border-indigo/20 rounded-2xl flex items-center justify-center shadow-[0_0_30px_-10px_rgba(108,99,255,0.3)] mb-8 relative bg-navy z-10">
+                        <i data-lucide="mouse-pointer-2" class="w-8 h-8 text-indigo"></i>
+                        <div class="absolute -top-2 -right-2 w-6 h-6 bg-surfaceHighlight rounded-full border border-white/10 flex items-center justify-center text-xs font-bold">2</div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Tap it</h3>
+                    <p class="text-grey text-sm mb-6 px-4">Click the Nudge extension. Set your reminder in 2 seconds.</p>
+                    <!-- Small UI Preview -->
+                    <div class="bg-surfaceHighlight rounded-lg p-3 border border-white/5 mx-auto w-4/5 h-24 relative overflow-hidden flex items-center justify-center">
+                         <div class="text-xs bg-indigo px-3 py-1 rounded text-white">Remind me: 3 Days</div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="text-center group reveal delay-200">
+                    <div class="w-16 h-16 mx-auto bg-surface border border-indigo/20 rounded-2xl flex items-center justify-center shadow-[0_0_30px_-10px_rgba(108,99,255,0.3)] mb-8 relative bg-navy z-10">
+                        <i data-lucide="rotate-ccw" class="w-8 h-8 text-indigo"></i>
+                        <div class="absolute -top-2 -right-2 w-6 h-6 bg-surfaceHighlight rounded-full border border-white/10 flex items-center justify-center text-xs font-bold">3</div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">We bring you back</h3>
+                    <p class="text-grey text-sm mb-6 px-4">At the right time, Nudge reminds you and opens the exact conversation.</p>
+                    <!-- Small UI Preview -->
+                    <div class="bg-surfaceHighlight rounded-lg p-3 border border-white/5 mx-auto w-4/5 h-24 relative overflow-hidden flex flex-col justify-center">
+                        <div class="flex items-center gap-2 mb-2">
+                             <div class="w-2 h-2 rounded-full bg-green-400"></div>
+                             <div class="text-[10px] text-grey">Alert</div>
+                        </div>
+                        <div class="text-xs font-bold">Opening Gmail...</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center reveal">
+                <a href="#" class="inline-flex items-center gap-2 bg-surfaceHighlight border border-white/10 hover:border-indigo/50 hover:text-indigo transition-all px-6 py-3 rounded-full text-sm font-medium">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg" alt="Chrome" class="w-4 h-4">
+                    Add to Chrome — It's Free
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Integrations -->
+    <section id="integrations" class="py-24 bg-surfaceHighlight/20 border-y border-white/5 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="font-display font-bold text-3xl md:text-4xl mb-4 reveal">Works where your conversations live.</h2>
+            <p class="text-grey mb-16 reveal">No new inbox. No copy-pasting. Just add Nudge to Chrome.</p>
+
+            <div class="relative max-w-2xl mx-auto h-[300px] flex items-center justify-center reveal">
+                <!-- Center Node -->
+                <div class="w-24 h-24 rounded-2xl bg-navy border border-indigo shadow-[0_0_50px_-10px_rgba(108,99,255,0.5)] z-20 flex items-center justify-center animate-pulse-glow">
+                    <div class="bg-gradient-to-br from-indigo to-violet w-12 h-12 rounded-lg flex items-center justify-center">
+                        <i data-lucide="zap" class="w-7 h-7 text-white fill-white"></i>
+                    </div>
+                </div>
+
+                <!-- Connecting Lines (SVG) -->
+                <svg class="absolute inset-0 w-full h-full z-0 stroke-indigo/20" style="overflow: visible;">
+                    <line x1="50%" y1="50%" x2="20%" y2="20%" stroke-width="2" stroke-dasharray="5,5" />
+                    <line x1="50%" y1="50%" x2="50%" y2="85%" stroke-width="2" stroke-dasharray="5,5" />
+                    <line x1="50%" y1="50%" x2="80%" y2="20%" stroke-width="2" stroke-dasharray="5,5" />
+                </svg>
+
+                <!-- Platform Nodes -->
+                <!-- Gmail -->
+                <div class="absolute top-[10%] left-[10%] md:left-[15%] flex flex-col items-center gap-2">
+                    <div class="w-16 h-16 bg-surface border border-white/10 rounded-xl flex items-center justify-center shadow-lg">
+                        <i data-lucide="mail" class="w-8 h-8 text-red-500"></i>
+                    </div>
+                    <span class="text-xs font-bold text-grey uppercase tracking-wide">Gmail</span>
+                </div>
+
+                <!-- WhatsApp -->
+                <div class="absolute bottom-[0%] left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+                    <div class="w-16 h-16 bg-surface border border-white/10 rounded-xl flex items-center justify-center shadow-lg">
+                        <i data-lucide="message-circle" class="w-8 h-8 text-green-500"></i>
+                    </div>
+                    <span class="text-xs font-bold text-grey uppercase tracking-wide">WhatsApp</span>
+                </div>
+
+                <!-- LinkedIn -->
+                <div class="absolute top-[10%] right-[10%] md:right-[15%] flex flex-col items-center gap-2">
+                    <div class="w-16 h-16 bg-surface border border-white/10 rounded-xl flex items-center justify-center shadow-lg">
+                        <i data-lucide="linkedin" class="w-8 h-8 text-blue-500"></i>
+                    </div>
+                    <span class="text-xs font-bold text-grey uppercase tracking-wide">LinkedIn</span>
+                </div>
+            </div>
+            
+            <div class="mt-12 inline-flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full border border-white/5 reveal">
+                <i data-lucide="chrome" class="w-4 h-4 text-grey"></i>
+                <div class="flex text-indigo">
+                    <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                    <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                    <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                    <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                    <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                </div>
+                <span class="text-xs text-grey font-medium">Available on Chrome Web Store</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Extension Preview -->
+    <section class="py-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-display font-bold text-3xl md:text-4xl mb-4">Lives right in your browser. <br class="hidden md:block">Out of your way until you need it.</h2>
+            </div>
+
+            <!-- Big Mockup -->
+            <div class="relative rounded-xl border border-white/10 bg-navy shadow-2xl overflow-hidden max-w-5xl mx-auto reveal tilt-card">
+                <!-- Purple Glow Behind -->
+                <div class="absolute inset-0 bg-indigo/5 blur-3xl z-0 pointer-events-none"></div>
+
+                <!-- Browser Header -->
+                <div class="relative z-10 bg-surfaceHighlight border-b border-white/5 h-10 flex items-center px-4 justify-between">
+                    <div class="flex gap-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500/50"></div>
+                    </div>
+                    <div class="flex-1 mx-8">
+                        <div class="bg-navy h-6 rounded flex items-center px-2 relative">
+                            <span class="text-xs text-grey">gmail.com</span>
+                            <!-- Extension Icon Highlight -->
+                            <div class="absolute right-2 top-1 w-4 h-4 bg-indigo rounded-sm flex items-center justify-center animate-pulse">
+                                <i data-lucide="zap" class="w-3 h-3 text-white fill-white"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Browser Body -->
+                <div class="relative z-10 bg-navy h-[500px] flex">
+                    <!-- Sidebar -->
+                    <div class="w-64 border-r border-white/5 p-4 hidden md:block">
+                        <div class="h-8 bg-red-500/20 w-32 rounded-full mb-6 flex items-center px-3 text-xs text-red-200 font-bold">Compose</div>
+                        <div class="space-y-4">
+                            <div class="h-4 bg-white/10 rounded w-full"></div>
+                            <div class="h-4 bg-white/5 rounded w-3/4"></div>
+                            <div class="h-4 bg-white/5 rounded w-5/6"></div>
+                        </div>
+                    </div>
+                    <!-- Main Area -->
+                    <div class="flex-1 p-8 relative">
+                        <!-- Mockup Inbox List -->
+                        <div class="space-y-4 opacity-50">
+                            <div class="h-12 border-b border-white/5 flex items-center gap-4">
+                                <div class="w-4 h-4 border border-white/20 rounded"></div>
+                                <div class="w-40 h-3 bg-white/10 rounded"></div>
+                            </div>
+                            <div class="h-12 border-b border-white/5 flex items-center gap-4">
+                                <div class="w-4 h-4 border border-white/20 rounded"></div>
+                                <div class="w-40 h-3 bg-white/10 rounded"></div>
+                            </div>
+                        </div>
+
+                        <!-- The Active Popup Overlay (Mocked) -->
+                        <div class="absolute top-4 right-4 w-80 bg-surface border border-indigo/40 rounded-lg shadow-2xl p-5">
+                            <div class="flex justify-between items-center mb-4 border-b border-white/5 pb-2">
+                                <span class="font-bold text-sm">Nudge</span>
+                                <span class="text-xs text-indigo cursor-pointer">Settings</span>
+                            </div>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-surfaceHighlight rounded p-3 border border-white/5">
+                                    <p class="text-xs text-grey mb-1">Active Conversation</p>
+                                    <p class="text-sm font-medium truncate">Re: Marketing Partnership Q3</p>
+                                </div>
+                                
+                                <div>
+                                    <p class="text-xs text-grey mb-2">Remind me on:</p>
+                                    <div class="grid grid-cols-2 gap-2">
+                                        <button class="text-xs bg-indigo text-white py-2 rounded">Tomorrow</button>
+                                        <button class="text-xs bg-white/5 text-grey hover:bg-white/10 py-2 rounded">Next Week</button>
+                                    </div>
+                                </div>
+
+                                <button class="w-full bg-gradient-to-r from-indigo to-violet py-2 rounded text-sm font-bold text-white shadow-lg">Save Follow-up</button>
+                            </div>
+                        </div>
+
+                        <!-- Annotation Lines -->
+                        <div class="hidden md:block absolute top-20 right-[350px] w-32 border-t border-white/30"></div>
+                        <div class="hidden md:block absolute top-16 right-[480px] text-xs text-grey text-right w-40">
+                            One tap to save <br>context from inbox
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="py-24 bg-surfaceHighlight/30">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-display font-bold text-3xl md:text-4xl mb-4">People are closing conversations they would have forgotten.</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Quote 1 -->
+                <div class="p-6 rounded-xl bg-navy border border-white/5 reveal">
+                    <div class="flex text-yellow-400 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-white/90 text-sm leading-relaxed mb-6">"I followed up with 3 leads I had completely lost track of. Closed all three within a week. It basically pays for itself."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-blue-600"></div>
+                        <div>
+                            <p class="text-sm font-bold">Sarah J.</p>
+                            <p class="text-xs text-grey">Sales Lead, TechStart</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quote 2 -->
+                <div class="p-6 rounded-xl bg-navy border border-white/5 reveal delay-100">
+                    <div class="flex text-yellow-400 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-white/90 text-sm leading-relaxed mb-6">"Finally something that works across LinkedIn and Gmail. I use it dozens of times a day. Game changer for networking."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-purple-400 to-purple-600"></div>
+                        <div>
+                            <p class="text-sm font-bold">Mike R.</p>
+                            <p class="text-xs text-grey">Founder, Studio</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quote 3 -->
+                <div class="p-6 rounded-xl bg-navy border border-white/5 reveal delay-200">
+                    <div class="flex text-yellow-400 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-white/90 text-sm leading-relaxed mb-6">"Feels like having an assistant who never forgets. The way it takes you back to the exact email thread is magic."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-green-400 to-green-600"></div>
+                        <div>
+                            <p class="text-sm font-bold">Elena T.</p>
+                            <p class="text-xs text-grey">Senior Recruiter</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-24 px-6">
+        <div class="max-w-5xl mx-auto relative rounded-3xl overflow-hidden border border-indigo/30 reveal">
+            <!-- Background Gradient -->
+            <div class="absolute inset-0 bg-gradient-to-br from-surface to-navy z-0"></div>
+            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo/20 blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2"></div>
+            
+            <div class="relative z-10 px-8 py-20 text-center">
+                <h2 class="font-display font-bold text-4xl md:text-5xl mb-6">Stop losing conversations.<br>Start closing them.</h2>
+                <p class="text-lg text-grey mb-10">Install Nudge in 2 minutes. It's free forever for individual use.</p>
+                
+                <div class="flex flex-col items-center gap-6">
+                    <a href="#" class="flex items-center gap-3 bg-gradient-to-r from-indigo to-violet px-10 py-5 rounded-full font-bold text-lg text-white shadow-xl shadow-indigo/30 hover:shadow-indigo/50 hover:scale-105 transition-all">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg" alt="Chrome" class="w-6 h-6 brightness-0 invert">
+                        Add to Chrome — It's Free
+                    </a>
+                    
+                    <div class="flex flex-col md:flex-row items-center gap-3 md:gap-6 text-sm text-grey/60">
+                        <span class="flex items-center gap-1"><i data-lucide="lock" class="w-3 h-3"></i> Free to install</span>
+                        <span class="hidden md:inline">·</span>
+                        <span>No credit card required</span>
+                        <span class="hidden md:inline">·</span>
+                        <span>Works on Gmail, LinkedIn & WhatsApp</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 py-12 bg-navy">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 bg-gradient-to-br from-indigo to-violet rounded flex items-center justify-center">
+                    <i data-lucide="zap" class="w-3 h-3 text-white fill-white"></i>
+                </div>
+                <div>
+                    <span class="font-display font-bold text-lg">Nudge</span>
+                    <p class="text-xs text-grey">One tap. Back in the conversation.</p>
+                </div>
+            </div>
+
+            <div class="flex gap-8 text-sm text-grey">
+                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition-colors">How it works</a>
+                <a href="#" class="hover:text-white transition-colors">Contact</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="#" class="text-grey hover:text-white transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                <a href="#" class="text-grey hover:text-white transition-colors"><i data-lucide="chrome" class="w-5 h-5"></i></a>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 mt-8 text-center md:text-left">
+            <p class="text-xs text-grey/40">© 2026 Nudge. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Scroll Animation Observer
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
