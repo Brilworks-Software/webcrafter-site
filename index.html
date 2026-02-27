@@ -81,6 +81,7 @@
         .text-gradient {
             background: linear-gradient(to right, #6C63FF, #A78BFA);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
@@ -283,37 +284,49 @@
     <section class="py-24 bg-surfaceHighlight/30 border-y border-white/5">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-16 reveal">
-                <h2 class="font-display font-bold text-3xl md:text-4xl mb-4">You meant to follow up. <span class="text-white/40">Life happened.</span></h2>
+                <h2 class="font-display font-bold text-4xl md:text-5xl mb-6 tracking-tight">You meant to follow up. <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-400">Life happened.</span></h2>
                 <p class="text-grey text-lg">Every day, conversations go cold across your inboxes. Not because you didn't care — because nothing reminded you.</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Card 1 -->
-                <div class="p-8 rounded-2xl bg-navy border border-white/5 relative overflow-hidden group reveal">
-                    <div class="absolute top-4 right-4 w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                    <div class="w-12 h-12 bg-surfaceHighlight rounded-lg flex items-center justify-center mb-6 group-hover:bg-red-500/10 transition-colors">
-                        <i data-lucide="mail" class="w-6 h-6 text-grey group-hover:text-red-400"></i>
+                <div class="p-8 rounded-2xl bg-surface/40 hover:bg-surface/60 border border-white/10 hover:border-indigo/40 relative overflow-hidden group reveal transition-all duration-500 hover:shadow-[0_0_40px_-10px_rgba(248,113,113,0.15)] hover:-translate-y-1">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-red-500/10 blur-[40px] rounded-full group-hover:bg-red-500/20 transition-colors duration-500"></div>
+                    <div class="absolute top-6 right-6 w-2 h-2 bg-red-400 rounded-full animate-pulse shadow-[0_0_10px_rgba(248,113,113,0.8)]"></div>
+                    <div class="w-14 h-14 bg-surfaceHighlight/80 backdrop-blur-sm rounded-xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 border border-white/5 shadow-xl">
+                        <i data-lucide="mail" class="w-7 h-7 text-red-400"></i>
                     </div>
-                    <p class="text-lg font-medium text-white/80 italic">"Sent a proposal. Never followed up. Lost the client."</p>
-                    <p class="mt-4 text-sm text-grey font-mono uppercase tracking-widest">Gmail</p>
+                    <p class="text-lg font-medium text-white/95 leading-relaxed relative z-10">"Sent a proposal. Never followed up. Lost the client."</p>
+                    <div class="mt-8 flex items-center gap-2 relative z-10">
+                        <div class="w-1.5 h-1.5 bg-red-400 rounded-full"></div>
+                        <p class="text-xs text-grey font-bold uppercase tracking-widest">Gmail</p>
+                    </div>
                 </div>
                 <!-- Card 2 -->
-                <div class="p-8 rounded-2xl bg-navy border border-white/5 relative overflow-hidden group reveal delay-100">
-                    <div class="absolute top-4 right-4 w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                    <div class="w-12 h-12 bg-surfaceHighlight rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-500/10 transition-colors">
-                        <i data-lucide="linkedin" class="w-6 h-6 text-grey group-hover:text-blue-400"></i>
+                <div class="p-8 rounded-2xl bg-surface/40 hover:bg-surface/60 border border-white/10 hover:border-indigo/40 relative overflow-hidden group reveal delay-100 transition-all duration-500 hover:shadow-[0_0_40px_-10px_rgba(96,165,250,0.15)] hover:-translate-y-1">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 blur-[40px] rounded-full group-hover:bg-blue-500/20 transition-colors duration-500"></div>
+                    <div class="absolute top-6 right-6 w-2 h-2 bg-blue-400 rounded-full animate-pulse shadow-[0_0_10px_rgba(96,165,250,0.8)]"></div>
+                    <div class="w-14 h-14 bg-surfaceHighlight/80 backdrop-blur-sm rounded-xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 border border-white/5 shadow-xl">
+                        <i data-lucide="linkedin" class="w-7 h-7 text-blue-400"></i>
                     </div>
-                    <p class="text-lg font-medium text-white/80 italic">"Great intro call. Forgot to reconnect. Opportunity gone."</p>
-                    <p class="mt-4 text-sm text-grey font-mono uppercase tracking-widest">LinkedIn</p>
+                    <p class="text-lg font-medium text-white/95 leading-relaxed relative z-10">"Great intro call. Forgot to reconnect. Opportunity gone."</p>
+                    <div class="mt-8 flex items-center gap-2 relative z-10">
+                        <div class="w-1.5 h-1.5 bg-blue-400 rounded-full"></div>
+                        <p class="text-xs text-grey font-bold uppercase tracking-widest">LinkedIn</p>
+                    </div>
                 </div>
                 <!-- Card 3 -->
-                <div class="p-8 rounded-2xl bg-navy border border-white/5 relative overflow-hidden group reveal delay-200">
-                    <div class="absolute top-4 right-4 w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                    <div class="w-12 h-12 bg-surfaceHighlight rounded-lg flex items-center justify-center mb-6 group-hover:bg-green-500/10 transition-colors">
-                        <i data-lucide="message-circle" class="w-6 h-6 text-grey group-hover:text-green-400"></i>
+                <div class="p-8 rounded-2xl bg-surface/40 hover:bg-surface/60 border border-white/10 hover:border-indigo/40 relative overflow-hidden group reveal delay-200 transition-all duration-500 hover:shadow-[0_0_40px_-10px_rgba(74,222,128,0.15)] hover:-translate-y-1">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-green-500/10 blur-[40px] rounded-full group-hover:bg-green-500/20 transition-colors duration-500"></div>
+                    <div class="absolute top-6 right-6 w-2 h-2 bg-green-400 rounded-full animate-pulse shadow-[0_0_10px_rgba(74,222,128,0.8)]"></div>
+                    <div class="w-14 h-14 bg-surfaceHighlight/80 backdrop-blur-sm rounded-xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 border border-white/5 shadow-xl">
+                        <i data-lucide="message-circle" class="w-7 h-7 text-green-400"></i>
                     </div>
-                    <p class="text-lg font-medium text-white/80 italic">"Said you'd check back in a week. Three weeks passed."</p>
-                    <p class="mt-4 text-sm text-grey font-mono uppercase tracking-widest">WhatsApp</p>
+                    <p class="text-lg font-medium text-white/95 leading-relaxed relative z-10">"Said you'd check back in a week. Three weeks passed."</p>
+                    <div class="mt-8 flex items-center gap-2 relative z-10">
+                        <div class="w-1.5 h-1.5 bg-green-400 rounded-full"></div>
+                        <p class="text-xs text-grey font-bold uppercase tracking-widest">WhatsApp</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -550,58 +563,61 @@
 
             <div class="grid md:grid-cols-3 gap-6">
                 <!-- Quote 1 -->
-                <div class="p-6 rounded-xl bg-navy border border-white/5 reveal">
-                    <div class="flex text-yellow-400 mb-4">
+                <div class="p-8 rounded-2xl bg-surface/40 hover:bg-surface/60 transition-colors border border-white/10 reveal relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-indigo/5 blur-[40px] rounded-full group-hover:bg-indigo/10 transition-colors duration-500"></div>
+                    <div class="flex text-yellow-400 mb-6 relative z-10">
                         <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                         <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                         <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                         <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                         <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                     </div>
-                    <p class="text-white/90 text-sm leading-relaxed mb-6">"I followed up with 3 leads I had completely lost track of. Closed all three within a week. It basically pays for itself."</p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-blue-600"></div>
+                    <p class="text-white/95 text-base leading-relaxed mb-8 relative z-10 font-medium">"I followed up with 3 leads I had completely lost track of. Closed all three within a week. It basically pays for itself."</p>
+                    <div class="flex items-center gap-4 relative z-10">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80" alt="Sarah J." class="w-12 h-12 rounded-full object-cover border-2 border-indigo/30 shadow-lg shadow-indigo/20">
                         <div>
-                            <p class="text-sm font-bold">Sarah J.</p>
-                            <p class="text-xs text-grey">Sales Lead, TechStart</p>
+                            <p class="text-sm font-bold text-white">Sarah J.</p>
+                            <p class="text-xs text-indigo-300 mt-0.5 font-medium">Sales Lead, TechStart</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Quote 2 -->
-                <div class="p-6 rounded-xl bg-navy border border-white/5 reveal delay-100">
-                    <div class="flex text-yellow-400 mb-4">
+                <div class="p-8 rounded-2xl bg-surface/40 hover:bg-surface/60 transition-colors border border-white/10 reveal delay-100 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-violet/5 blur-[40px] rounded-full group-hover:bg-violet/10 transition-colors duration-500"></div>
+                    <div class="flex text-yellow-400 mb-6 relative z-10">
                         <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                         <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                         <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                         <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                         <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                     </div>
-                    <p class="text-white/90 text-sm leading-relaxed mb-6">"Finally something that works across LinkedIn and Gmail. I use it dozens of times a day. Game changer for networking."</p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-purple-400 to-purple-600"></div>
+                    <p class="text-white/95 text-base leading-relaxed mb-8 relative z-10 font-medium">"Finally something that works across LinkedIn and Gmail. I use it dozens of times a day. Game changer for networking."</p>
+                    <div class="flex items-center gap-4 relative z-10">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Mike R." class="w-12 h-12 rounded-full object-cover border-2 border-violet/30 shadow-lg shadow-violet/20">
                         <div>
-                            <p class="text-sm font-bold">Mike R.</p>
-                            <p class="text-xs text-grey">Founder, Studio</p>
+                            <p class="text-sm font-bold text-white">Mike R.</p>
+                            <p class="text-xs text-violet-300 mt-0.5 font-medium">Founder, Studio</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Quote 3 -->
-                <div class="p-6 rounded-xl bg-navy border border-white/5 reveal delay-200">
-                    <div class="flex text-yellow-400 mb-4">
+                <div class="p-8 rounded-2xl bg-surface/40 hover:bg-surface/60 transition-colors border border-white/10 reveal delay-200 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-indigo/5 blur-[40px] rounded-full group-hover:bg-indigo/10 transition-colors duration-500"></div>
+                    <div class="flex text-yellow-400 mb-6 relative z-10">
                         <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                         <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                         <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                         <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                         <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                     </div>
-                    <p class="text-white/90 text-sm leading-relaxed mb-6">"Feels like having an assistant who never forgets. The way it takes you back to the exact email thread is magic."</p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-green-400 to-green-600"></div>
+                    <p class="text-white/95 text-base leading-relaxed mb-8 relative z-10 font-medium">"Feels like having an assistant who never forgets. The way it takes you back to the exact email thread is magic."</p>
+                    <div class="flex items-center gap-4 relative z-10">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&q=80" alt="Elena T." class="w-12 h-12 rounded-full object-cover border-2 border-indigo/30 shadow-lg shadow-indigo/20">
                         <div>
-                            <p class="text-sm font-bold">Elena T.</p>
-                            <p class="text-xs text-grey">Senior Recruiter</p>
+                            <p class="text-sm font-bold text-white">Elena T.</p>
+                            <p class="text-xs text-indigo-300 mt-0.5 font-medium">Senior Recruiter</p>
                         </div>
                     </div>
                 </div>
