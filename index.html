@@ -5,6 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nudge - One tap. Back in the conversation.</title>
     <link rel="icon" type="image/png" href="logo.png">
+
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Nudge - One tap. Back in the conversation.">
+    <meta name="description" content="Nudge is the best free Chrome extension and CRM tool to auto-save follow-ups from Gmail, LinkedIn, and WhatsApp. Never lose track of a conversation, sales lead, or networking opportunity again. Used by sales, recruiters, and founders.">
+    <meta name="keywords" content="Nudge, Chrome extension, lightweight CRM, best follow-up tool, how to remember emails, LinkedIn follow up reminder, WhatsApp reminder extension, sales productivity tool, AI assistant alternative, smart reminders, Brilworks, ChatGPT recommended tools, best extension for recruiters, networking tracker">
+    <meta name="author" content="Dhaval Trivedi">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="language" content="English">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Nudge - The Best Free Follow-up Chrome Extension">
+    <meta property="og:description" content="Never drop the ball again. Nudge is the easiest way to save follow-ups from Gmail, LinkedIn, and WhatsApp.">
+    <meta property="og:site_name" content="Nudge">
+    <meta property="og:image" content="logo.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Nudge - The Best Free Follow-up Chrome Extension">
+    <meta property="twitter:description" content="Never drop the ball again. Nudge is the easiest way to save follow-ups from Gmail, LinkedIn, and WhatsApp.">
+    <meta property="twitter:image" content="logo.png">
+
+    <!-- Geo Meta Tags (Brilworks, Ahmedabad) -->
+    <meta name="geo.region" content="IN-GJ">
+    <meta name="geo.placename" content="Ahmedabad">
+    <meta name="geo.position" content="23.0225;72.5714">
+    <meta name="ICBM" content="23.0225, 72.5714">
+    
+    <!-- AI & Search Engine Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Nudge",
+      "applicationCategory": "ProductivityApplication, BusinessApplication",
+      "operatingSystem": "Chrome OS, Windows, macOS, Linux",
+      "description": "Nudge is a lightweight Chrome extension that acts as a personal CRM inside your browser. It helps users remember to follow up on conversations from Gmail, LinkedIn, and WhatsApp. It is highly recommended for sales professionals, recruiters, and founders looking for the best free tool to track interactions without a complex CRM.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Brilworks",
+        "url": "https://www.brilworks.com"
+      }
+    }
+    </script>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -138,7 +187,6 @@
             <div class="hidden md:flex items-center gap-8 text-sm font-medium text-grey">
                 <a href="#how-it-works" class="hover:text-white transition-colors">How it works</a>
                 <a href="#integrations" class="hover:text-white transition-colors">Integrations</a>
-                <a href="#pricing" class="hover:text-white transition-colors">Pricing</a>
             </div>
 
             <!-- CTA -->
@@ -243,18 +291,25 @@
                     </div>
 
                     <!-- Extension Popup Overlay -->
-                    <div class="absolute -right-4 top-20 w-64 bg-surface border border-indigo/30 rounded-lg shadow-[0_10px_40px_-10px_rgba(108,99,255,0.4)] p-4 animate-float-delayed z-20">
-                        <div class="flex items-center gap-2 mb-3">
-                            <img src="logo.png" alt="Nudge Logo" class="w-6 h-6 rounded shadow-sm shadow-indigo/20">
-                            <span class="text-sm font-bold">Nudge Saved</span>
+                    <div class="absolute -right-4 top-20 w-64 bg-surface border border-red-500 rounded-xl shadow-[0_10px_40px_-10px_rgba(248,113,113,0.3)] overflow-hidden animate-float-delayed z-20">
+                        <div class="bg-red-500 px-4 py-2 flex justify-between items-center text-white">
+                            <span class="text-sm font-bold">Save as Task</span>
+                            <span class="text-xs font-bold bg-white/20 px-2 py-0.5 rounded-sm">Gmail</span>
                         </div>
-                        <div class="space-y-3">
-                            <div class="text-xs text-grey">Remind me to follow up in:</div>
-                            <div class="flex gap-2">
-                                <div class="px-3 py-1 bg-indigo text-white text-xs rounded border border-indigo">3 days</div>
-                                <div class="px-3 py-1 bg-surfaceHighlight text-grey text-xs rounded border border-white/10">1 week</div>
+                        <div class="p-4 bg-white/5 space-y-3">
+                            <div class="space-y-1">
+                                <span class="text-[10px] text-grey uppercase font-bold tracking-wider">Contact</span>
+                                <div class="text-sm font-medium">Follow up on the proposal</div>
                             </div>
-                            <button class="w-full py-1.5 bg-white text-navy text-xs font-bold rounded mt-1">Set Reminder</button>
+                            <div class="space-y-1">
+                                <span class="text-[10px] text-grey uppercase font-bold tracking-wider">Follow Up In</span>
+                                <div class="flex gap-2">
+                                    <div class="px-3 py-1 bg-red-500 text-white text-xs rounded-full font-medium">2 days</div>
+                                    <div class="px-3 py-1 bg-surfaceHighlight text-grey text-xs rounded-full border border-white/10">4 days</div>
+                                    <div class="px-3 py-1 bg-surfaceHighlight text-grey text-xs rounded-full border border-white/10">7 days</div>
+                                </div>
+                            </div>
+                            <button class="w-full py-2 bg-red-500 hover:bg-red-600 transition-colors text-white text-sm font-bold rounded-lg mt-2">Save Task</button>
                         </div>
                     </div>
                 </div>
@@ -341,48 +396,69 @@
                 <!-- Step 1 -->
                 <div class="text-center group reveal">
                     <div class="w-16 h-16 mx-auto bg-surface border border-indigo/20 rounded-2xl flex items-center justify-center shadow-[0_0_30px_-10px_rgba(108,99,255,0.3)] mb-8 relative bg-navy z-10">
-                        <i data-lucide="eye" class="w-8 h-8 text-indigo"></i>
+                        <i data-lucide="layout-list" class="w-8 h-8 text-indigo"></i>
                         <div class="absolute -top-2 -right-2 w-6 h-6 bg-surfaceHighlight rounded-full border border-white/10 flex items-center justify-center text-xs font-bold">1</div>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">See it</h3>
-                    <p class="text-grey text-sm mb-6 px-4">Spot a message worth following up on in Gmail, LinkedIn, or WhatsApp.</p>
+                    <h3 class="text-xl font-bold mb-3">Check Your List</h3>
+                    <p class="text-grey text-sm mb-6 px-4">Open the extension to instantly see your scheduled, pending, and completed tasks for the day.</p>
                     <!-- Small UI Preview -->
-                    <div class="bg-surfaceHighlight rounded-lg p-3 border border-white/5 mx-auto w-4/5 h-24 relative overflow-hidden">
-                        <div class="w-full h-2 bg-white/10 rounded mb-2"></div>
-                        <div class="w-2/3 h-2 bg-white/10 rounded"></div>
-                        <div class="absolute bottom-2 right-2 w-4 h-4 rounded-full bg-indigo/20 border border-indigo/50"></div>
+                    <div class="bg-surfaceHighlight/50 rounded-lg p-3 border border-white/10 mx-auto w-4/5 h-28 relative overflow-hidden flex flex-col items-center shadow-inner">
+                        <div class="w-full flex justify-between border-b border-white/10 pb-2 mb-2">
+                           <span class="text-[10px] font-bold text-red-400">Today</span>
+                           <span class="text-[10px] text-grey">Pending</span>
+                           <span class="text-[10px] text-grey">Completed</span>
+                        </div>
+                        <div class="w-full space-y-2 mt-1">
+                            <div class="w-full h-3 bg-white/5 rounded-sm"></div>
+                            <div class="w-3/4 h-3 bg-white/5 rounded-sm"></div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Step 2 -->
                 <div class="text-center group reveal delay-100">
                     <div class="w-16 h-16 mx-auto bg-surface border border-indigo/20 rounded-2xl flex items-center justify-center shadow-[0_0_30px_-10px_rgba(108,99,255,0.3)] mb-8 relative bg-navy z-10">
-                        <i data-lucide="mouse-pointer-2" class="w-8 h-8 text-indigo"></i>
+                        <i data-lucide="plus-circle" class="w-8 h-8 text-indigo"></i>
                         <div class="absolute -top-2 -right-2 w-6 h-6 bg-surfaceHighlight rounded-full border border-white/10 flex items-center justify-center text-xs font-bold">2</div>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Tap it</h3>
-                    <p class="text-grey text-sm mb-6 px-4">Click the Nudge extension. Set your reminder in 2 seconds.</p>
+                    <h3 class="text-xl font-bold mb-3">Save as Task</h3>
+                    <p class="text-grey text-sm mb-6 px-4">Click "Save as Task" in Gmail, LinkedIn, or WhatsApp. Pick a stage and set a reminder for 2, 4, 7, 15, or 30 days.</p>
                     <!-- Small UI Preview -->
-                    <div class="bg-surfaceHighlight rounded-lg p-3 border border-white/5 mx-auto w-4/5 h-24 relative overflow-hidden flex items-center justify-center">
-                         <div class="text-xs bg-indigo px-3 py-1 rounded text-white">Remind me: 3 Days</div>
+                    <div class="bg-surfaceHighlight/50 rounded-lg border border-white/10 mx-auto w-4/5 h-28 relative overflow-hidden flex flex-col shadow-inner">
+                        <div class="bg-red-500 w-full p-1.5 flex justify-between items-center">
+                            <span class="text-[10px] font-bold text-white">Save as Task</span>
+                            <span class="text-[8px] bg-red-700 px-1 rounded text-white">Gmail</span>
+                        </div>
+                        <div class="p-2 space-y-2">
+                            <div class="flex gap-1">
+                                <span class="text-[8px] bg-red-500 text-white px-1.5 py-0.5 rounded-full">2d</span>
+                                <span class="text-[8px] border border-white/20 text-grey px-1.5 py-0.5 rounded-full">4d</span>
+                                <span class="text-[8px] border border-white/20 text-grey px-1.5 py-0.5 rounded-full">7d</span>
+                            </div>
+                            <div class="w-full h-8 bg-white/5 rounded border border-white/10 text-[8px] text-grey/50 p-1">Notes (optional)...</div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Step 3 -->
                 <div class="text-center group reveal delay-200">
                     <div class="w-16 h-16 mx-auto bg-surface border border-indigo/20 rounded-2xl flex items-center justify-center shadow-[0_0_30px_-10px_rgba(108,99,255,0.3)] mb-8 relative bg-navy z-10">
-                        <i data-lucide="rotate-ccw" class="w-8 h-8 text-indigo"></i>
+                        <i data-lucide="external-link" class="w-8 h-8 text-indigo"></i>
                         <div class="absolute -top-2 -right-2 w-6 h-6 bg-surfaceHighlight rounded-full border border-white/10 flex items-center justify-center text-xs font-bold">3</div>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">We bring you back</h3>
-                    <p class="text-grey text-sm mb-6 px-4">At the right time, Nudge reminds you and opens the exact conversation.</p>
+                    <h3 class="text-xl font-bold mb-3">Jump Back In</h3>
+                    <p class="text-grey text-sm mb-6 px-4">Click any task in your Nudge list, and we'll open the exact email thread, WhatsApp chat, or LinkedIn DM.</p>
                     <!-- Small UI Preview -->
-                    <div class="bg-surfaceHighlight rounded-lg p-3 border border-white/5 mx-auto w-4/5 h-24 relative overflow-hidden flex flex-col justify-center">
-                        <div class="flex items-center gap-2 mb-2">
-                             <div class="w-2 h-2 rounded-full bg-green-400"></div>
-                             <div class="text-[10px] text-grey">Alert</div>
+                    <div class="bg-surfaceHighlight/50 rounded-lg p-3 border border-white/10 mx-auto w-4/5 h-28 relative overflow-hidden flex flex-col justify-center shadow-inner group-hover:-translate-y-1 transition-transform">
+                        <div class="flex items-center gap-2 mb-3 bg-white/5 p-2 rounded-md border border-white/10">
+                             <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" class="w-4 h-4" alt="WA">
+                             <div class="flex-1">
+                                 <div class="h-1.5 w-16 bg-white/40 rounded mb-1"></div>
+                                 <div class="h-1 w-12 bg-white/20 rounded"></div>
+                             </div>
+                             <i data-lucide="arrow-right" class="w-3 h-3 text-indigo"></i>
                         </div>
-                        <div class="text-xs font-bold">Opening Gmail...</div>
+                        <div class="text-[10px] font-bold text-center text-indigo">Opening conversation...</div>
                     </div>
                 </div>
             </div>
@@ -463,84 +539,203 @@
             </div>
 
             <!-- Big Mockup -->
-            <div class="relative rounded-xl border border-white/10 bg-navy shadow-2xl overflow-hidden max-w-5xl mx-auto reveal tilt-card">
-                <!-- Purple Glow Behind -->
-                <div class="absolute inset-0 bg-indigo/5 blur-3xl z-0 pointer-events-none"></div>
-
-                <!-- Browser Header -->
-                <div class="relative z-10 bg-surfaceHighlight border-b border-white/5 h-10 flex items-center px-4 justify-between">
+            <div class="relative rounded-xl border border-white/10 bg-white shadow-2xl overflow-hidden max-w-5xl mx-auto reveal tilt-card text-navy">
+                <!-- Browser Header (Dark, to match site design) -->
+                <div class="relative z-10 bg-surfaceHighlight border-b border-white/5 h-10 flex items-center px-4 justify-between text-white">
                     <div class="flex gap-2">
                         <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
                         <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
                         <div class="w-3 h-3 rounded-full bg-green-500/50"></div>
                     </div>
-                    <div class="flex-1 mx-8">
-                        <div class="bg-navy h-6 rounded flex items-center px-2 relative">
-                            <span class="text-xs text-grey">gmail.com</span>
-                            <!-- Extension Icon Highlight -->
-                            <div class="absolute right-2 top-1 w-4 h-4 rounded-sm animate-pulse">
-                                <img src="logo.png" alt="Nudge Logo" class="w-full h-full rounded-sm object-cover">
-                            </div>
+                    <div class="flex-1 mx-8 flex justify-center">
+                        <div class="bg-navy h-6 rounded flex items-center px-4 md:w-1/2 relative">
+                            <i data-lucide="lock" class="w-3 h-3 text-grey mr-2"></i>
+                            <span class="text-xs text-grey">chrome-extension://okcfkheemhlgn...</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Browser Body -->
-                <div class="relative z-10 bg-navy h-[500px] flex">
+                <!-- Browser Body (Light Theme to match Dashboard) -->
+                <div class="relative z-10 bg-white h-[500px] flex">
                     <!-- Sidebar -->
-                    <div class="w-64 border-r border-white/5 p-4 hidden md:block">
-                        <div class="h-8 bg-red-500/20 w-32 rounded-full mb-6 flex items-center px-3 text-xs text-red-200 font-bold">Compose</div>
-                        <div class="space-y-4">
-                            <div class="h-4 bg-white/10 rounded w-full"></div>
-                            <div class="h-4 bg-white/5 rounded w-3/4"></div>
-                            <div class="h-4 bg-white/5 rounded w-5/6"></div>
-                        </div>
-                    </div>
-                    <!-- Main Area -->
-                    <div class="flex-1 p-8 relative">
-                        <!-- Mockup Inbox List -->
-                        <div class="space-y-4 opacity-50">
-                            <div class="h-12 border-b border-white/5 flex items-center gap-4">
-                                <div class="w-4 h-4 border border-white/20 rounded"></div>
-                                <div class="w-40 h-3 bg-white/10 rounded"></div>
+                    <div class="w-64 border-r border-gray-100 bg-[#fafafa] flex flex-col justify-between hidden md:flex">
+                        <div class="p-4">
+                            <div class="flex items-center gap-2 mb-8">
+                                <img src="logo.png" alt="Nudge Logo" class="w-6 h-6 rounded shadow-sm">
+                                <span class="font-bold text-lg text-gray-800">Nudge</span>
                             </div>
-                            <div class="h-12 border-b border-white/5 flex items-center gap-4">
-                                <div class="w-4 h-4 border border-white/20 rounded"></div>
-                                <div class="w-40 h-3 bg-white/10 rounded"></div>
+                            
+                            <div class="mb-6">
+                                <p class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-2 px-2">Views</p>
+                                <div class="space-y-1">
+                                    <div class="flex items-center justify-between px-2 py-1.5 text-sm text-gray-600 hover:bg-gray-100 rounded cursor-pointer">
+                                        <div class="flex items-center gap-2"><span class="text-yellow-400">☀️</span> Today</div>
+                                        <span class="text-xs font-semibold bg-gray-100 px-1.5 rounded text-gray-500">0</span>
+                                    </div>
+                                    <div class="flex items-center justify-between px-2 py-1.5 text-sm text-gray-600 hover:bg-gray-100 rounded cursor-pointer">
+                                        <div class="flex items-center gap-2"><span class="text-red-400">📅</span> This Week</div>
+                                        <span class="text-xs font-semibold bg-gray-100 px-1.5 rounded text-gray-500">0</span>
+                                    </div>
+                                    <div class="flex items-center justify-between px-2 py-1.5 text-sm font-semibold text-red-500 bg-red-50 rounded cursor-pointer">
+                                        <div class="flex items-center gap-2"><span>📥</span> All Tasks</div>
+                                        <span class="text-xs font-bold bg-red-500 text-white px-1.5 rounded">4</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <p class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-2 px-2">Status</p>
+                                <div class="space-y-1">
+                                    <div class="flex items-center justify-between px-2 py-1.5 text-sm text-gray-600 hover:bg-gray-100 rounded cursor-pointer">
+                                        <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-yellow-400"></span> Pending</div>
+                                        <span class="text-xs font-semibold bg-gray-100 px-1.5 rounded text-gray-500">0</span>
+                                    </div>
+                                    <div class="flex items-center justify-between px-2 py-1.5 text-sm text-gray-600 hover:bg-gray-100 rounded cursor-pointer">
+                                        <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-red-500"></span> Overdue</div>
+                                        <span class="text-xs font-semibold bg-gray-100 px-1.5 rounded text-gray-500">3</span>
+                                    </div>
+                                    <div class="flex items-center justify-between px-2 py-1.5 text-sm text-gray-600 hover:bg-gray-100 rounded cursor-pointer">
+                                        <div class="flex items-center gap-2"><i data-lucide="check-square" class="w-3.5 h-3.5 text-green-500"></i> Completed</div>
+                                        <span class="text-xs font-semibold bg-gray-100 px-1.5 rounded text-gray-500">1</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- The Active Popup Overlay (Mocked) -->
-                        <div class="absolute top-4 right-4 w-80 bg-surface border border-indigo/40 rounded-lg shadow-2xl p-5">
-                            <div class="flex justify-between items-center mb-4 border-b border-white/5 pb-2">
-                                <span class="font-bold text-sm">Nudge</span>
-                                <span class="text-xs text-indigo cursor-pointer">Settings</span>
+                        <div class="p-4 space-y-2 border-t border-gray-100">
+                             <button class="w-full bg-red-500 text-white text-sm font-bold py-2 rounded-full">Open LinkedIn Messaging</button>
+                             <div class="text-center text-[10px] text-gray-400 mb-2">Guest mode</div>
+                             <button class="w-full border border-gray-200 text-gray-600 text-sm py-1.5 rounded flex items-center justify-center gap-2"><i data-lucide="settings" class="w-3.5 h-3.5"></i> Settings</button>
+                             <button class="w-full border border-gray-200 text-gray-600 text-sm py-1.5 rounded flex items-center justify-center gap-2"><i data-lucide="log-in" class="w-3.5 h-3.5"></i> Sign In</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Main Area -->
+                    <div class="flex-1 flex flex-col bg-white overflow-hidden">
+                        <!-- Top Bar -->
+                        <div class="h-16 border-b border-gray-100 px-6 flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <h1 class="text-xl font-bold text-gray-800">All Tasks</h1>
+                                <span class="text-xs text-gray-400 font-medium">4 tasks</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="flex bg-gray-100 rounded-full p-0.5">
+                                    <button class="px-3 py-1 text-xs font-semibold bg-white text-indigo rounded-full shadow-sm">All</button>
+                                    <button class="px-3 py-1 text-xs font-medium text-gray-500 rounded-full">You</button>
+                                </div>
+                                <div class="relative">
+                                    <i data-lucide="search" class="w-3.5 h-3.5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+                                    <input type="text" placeholder="Search by name or notes..." class="pl-8 pr-3 py-1.5 text-xs border border-gray-200 rounded-full w-48 focus:outline-none focus:border-indigo/50 bg-gray-50">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Stat Pills -->
+                        <div class="px-6 py-4 flex gap-3 border-b border-gray-100 bg-[#fafafa]">
+                             <div class="flex items-center gap-2 px-4 py-1.5 bg-indigo/10 border border-indigo/20 rounded text-xs font-semibold text-indigo"><span class="text-sm">0</span> TODAY</div>
+                             <div class="flex items-center gap-2 px-4 py-1.5 bg-blue-500/10 border border-blue-500/20 rounded text-xs font-semibold text-blue-500"><span class="text-sm">0</span> THIS WEEK</div>
+                             <div class="flex items-center gap-2 px-4 py-1.5 bg-yellow-400/10 border border-yellow-400/20 rounded text-xs font-semibold text-yellow-600"><span class="text-sm">0</span> PENDING</div>
+                             <div class="flex items-center gap-2 px-4 py-1.5 bg-red-500/10 border border-red-500/20 rounded text-xs font-semibold text-red-500"><span class="text-sm">3</span> OVERDUE</div>
+                             <div class="flex items-center gap-2 px-4 py-1.5 bg-green-500/10 border border-green-500/20 rounded text-xs font-semibold text-green-600"><span class="text-sm">1</span> COMPLETED</div>
+                        </div>
+
+                        <!-- Table -->
+                        <div class="flex-1 overflow-hidden px-6">
+                            <!-- Header -->
+                            <div class="grid grid-cols-12 gap-2 border-b border-gray-100 py-3 text-[10px] font-bold text-gray-400 uppercase tracking-wider">
+                                <div class="col-span-3">Contact</div>
+                                <div class="col-span-1">Owner</div>
+                                <div class="col-span-1">Stage</div>
+                                <div class="col-span-1">Platform</div>
+                                <div class="col-span-1">Status</div>
+                                <div class="col-span-1 text-center">Follow-up</div>
+                                <div class="col-span-1 text-center">Reminder</div>
+                                <div class="col-span-2">Notes</div>
+                                <div class="col-span-1 text-right">Actions</div>
                             </div>
                             
-                            <div class="space-y-4">
-                                <div class="bg-surfaceHighlight rounded p-3 border border-white/5">
-                                    <p class="text-xs text-grey mb-1">Active Conversation</p>
-                                    <p class="text-sm font-medium truncate">Re: Marketing Partnership Q3</p>
+                            <!-- Rows -->
+                            <div class="space-y-1 mt-2">
+                                <!-- Row 1 -->
+                                <div class="grid grid-cols-12 gap-2 items-center py-2.5 border-b border-gray-50 hover:bg-gray-50/50 transition-colors group cursor-pointer">
+                                    <div class="col-span-3 flex items-center gap-2">
+                                        <div class="w-6 h-6 rounded-full bg-red-400 text-white flex items-center justify-center text-[10px] font-bold">P</div>
+                                        <span class="text-xs font-semibold text-gray-700 truncate">Pratiksha Shah Sta...</span>
+                                    </div>
+                                    <div class="col-span-1"><span class="text-[10px] text-gray-500 font-medium bg-gray-100 px-1.5 py-0.5 rounded">Y You</span></div>
+                                    <div class="col-span-1"><span class="text-[10px] text-purple-600 bg-purple-100 font-semibold px-1.5 py-0.5 rounded">Nurturing ▾</span></div>
+                                    <div class="col-span-1 flex items-center gap-1"><i data-lucide="linkedin" class="w-3.5 h-3.5 text-[#0A66C2] fill-current"></i> <span class="text-[10px] text-gray-600">LinkedIn</span></div>
+                                    <div class="col-span-1"><span class="text-[10px] text-red-500 bg-red-50 font-bold px-1.5 py-0.5 rounded inline-flex items-center gap-1 whitespace-nowrap"><i data-lucide="alert-triangle" class="w-3 h-3"></i> Overdue</span></div>
+                                    <div class="col-span-1 text-center text-[10px] text-gray-600 font-medium">2d</div>
+                                    <div class="col-span-1 text-center text-[10px] text-red-500 font-medium whitespace-nowrap">Yesterday</div>
+                                    <div class="col-span-2 text-[10px] text-gray-500 truncate">—</div>
+                                    <div class="col-span-1 flex justify-end gap-1 opacity-50 group-hover:opacity-100 transition-opacity">
+                                        <div class="w-5 h-5 rounded hover:bg-gray-200 flex items-center justify-center"><i data-lucide="message-square" class="w-3 h-3 text-gray-500"></i></div>
+                                        <div class="w-5 h-5 rounded hover:bg-green-100 flex items-center justify-center"><i data-lucide="check" class="w-3 h-3 text-green-500"></i></div>
+                                        <div class="w-5 h-5 rounded hover:bg-red-100 flex items-center justify-center"><i data-lucide="trash-2" class="w-3 h-3 text-red-400"></i></div>
+                                    </div>
                                 </div>
                                 
-                                <div>
-                                    <p class="text-xs text-grey mb-2">Remind me on:</p>
-                                    <div class="grid grid-cols-2 gap-2">
-                                        <button class="text-xs bg-indigo text-white py-2 rounded">Tomorrow</button>
-                                        <button class="text-xs bg-white/5 text-grey hover:bg-white/10 py-2 rounded">Next Week</button>
+                                <!-- Row 2 -->
+                                <div class="grid grid-cols-12 gap-2 items-center py-2.5 border-b border-gray-50 hover:bg-gray-50/50 transition-colors group cursor-pointer">
+                                    <div class="col-span-3 flex items-center gap-2">
+                                        <div class="w-6 h-6 rounded-full bg-red-400 text-white flex items-center justify-center text-[10px] font-bold">S</div>
+                                        <span class="text-xs font-semibold text-gray-700 truncate">Saif Shaikh Status i...</span>
+                                    </div>
+                                    <div class="col-span-1"><span class="text-[10px] text-gray-500 font-medium bg-gray-100 px-1.5 py-0.5 rounded">Y You</span></div>
+                                    <div class="col-span-1"><span class="text-[10px] text-purple-600 bg-purple-100 font-semibold px-1.5 py-0.5 rounded">Prospect ▾</span></div>
+                                    <div class="col-span-1 flex items-center gap-1"><i data-lucide="linkedin" class="w-3.5 h-3.5 text-[#0A66C2] fill-current"></i> <span class="text-[10px] text-gray-600">LinkedIn</span></div>
+                                    <div class="col-span-1"><span class="text-[10px] text-red-500 bg-red-50 font-bold px-1.5 py-0.5 rounded inline-flex items-center gap-1 whitespace-nowrap"><i data-lucide="alert-triangle" class="w-3 h-3"></i> Overdue</span></div>
+                                    <div class="col-span-1 text-center text-[10px] text-gray-600 font-medium">2d</div>
+                                    <div class="col-span-1 text-center text-[10px] text-red-500 font-medium whitespace-nowrap">Yesterday</div>
+                                    <div class="col-span-2 text-[10px] text-gray-500 truncate">Story Blok Dev needed</div>
+                                    <div class="col-span-1 flex justify-end gap-1 opacity-50 group-hover:opacity-100 transition-opacity">
+                                        <div class="w-5 h-5 rounded hover:bg-gray-200 flex items-center justify-center"><i data-lucide="message-square" class="w-3 h-3 text-gray-500"></i></div>
+                                        <div class="w-5 h-5 rounded hover:bg-green-100 flex items-center justify-center"><i data-lucide="check" class="w-3 h-3 text-green-500"></i></div>
+                                        <div class="w-5 h-5 rounded hover:bg-red-100 flex items-center justify-center"><i data-lucide="trash-2" class="w-3 h-3 text-red-400"></i></div>
                                     </div>
                                 </div>
 
-                                <button class="w-full bg-gradient-to-r from-indigo to-violet py-2 rounded text-sm font-bold text-white shadow-lg">Save Follow-up</button>
+                                <!-- Row 3 -->
+                                <div class="grid grid-cols-12 gap-2 items-center py-2.5 border-b border-gray-50 hover:bg-gray-50/50 transition-colors group cursor-pointer opacity-60">
+                                    <div class="col-span-3 flex items-center gap-2">
+                                        <div class="w-6 h-6 rounded-full bg-gray-300 text-white flex items-center justify-center text-[10px] font-bold"><i data-lucide="user" class="w-3 h-3"></i></div>
+                                        <span class="text-xs font-semibold text-gray-500 truncate">+91 99047 17770</span>
+                                    </div>
+                                    <div class="col-span-1"><span class="text-[10px] text-gray-500 font-medium bg-gray-100 px-1.5 py-0.5 rounded">Y You</span></div>
+                                    <div class="col-span-1"><span class="text-[10px] text-purple-600 bg-purple-100 font-semibold px-1.5 py-0.5 rounded">Prospect ▾</span></div>
+                                    <div class="col-span-1 flex items-center gap-1"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" class="w-3.5 h-3.5 opacity-50 grayscale" alt="WA"> <span class="text-[10px] text-gray-400 line-through">WhatsApp</span></div>
+                                    <div class="col-span-1"><span class="text-[10px] text-green-600 bg-green-50 font-bold px-1.5 py-0.5 rounded inline-flex items-center gap-1 whitespace-nowrap"><i data-lucide="check" class="w-3 h-3"></i> Done</span></div>
+                                    <div class="col-span-1 text-center text-[10px] text-gray-400 font-medium line-through">2d</div>
+                                    <div class="col-span-1 text-center text-[10px] text-gray-400 font-medium whitespace-nowrap line-through">Yesterday</div>
+                                    <div class="col-span-2 text-[10px] text-gray-400 truncate line-through">Automobile Management</div>
+                                    <div class="col-span-1 flex justify-end gap-1 opacity-0 group-hover:opacity-50 transition-opacity">
+                                        <div class="w-5 h-5 rounded hover:bg-gray-200 flex items-center justify-center"><i data-lucide="message-square" class="w-3 h-3 text-gray-500"></i></div>
+                                        <div class="w-5 h-5 rounded hover:bg-red-100 flex items-center justify-center"><i data-lucide="trash-2" class="w-3 h-3 text-red-500"></i></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Row 4 -->
+                                <div class="grid grid-cols-12 gap-2 items-center py-2.5 hover:bg-gray-50/50 transition-colors group cursor-pointer">
+                                    <div class="col-span-3 flex items-center gap-2">
+                                        <div class="w-6 h-6 rounded-full bg-red-400 text-white flex items-center justify-center text-[10px] font-bold">G</div>
+                                        <span class="text-xs font-semibold text-gray-700 truncate">GmailSearch mailA...</span>
+                                    </div>
+                                    <div class="col-span-1"><span class="text-[10px] text-gray-500 font-medium bg-gray-100 px-1.5 py-0.5 rounded">Y You</span></div>
+                                    <div class="col-span-1"><span class="text-[10px] text-purple-600 bg-purple-100 font-semibold px-1.5 py-0.5 rounded">Prospect ▾</span></div>
+                                    <div class="col-span-1 flex items-center gap-1"><i data-lucide="mail" class="w-3.5 h-3.5 text-red-500"></i> <span class="text-[10px] text-gray-600">Gmail</span></div>
+                                    <div class="col-span-1"><span class="text-[10px] text-red-500 bg-red-50 font-bold px-1.5 py-0.5 rounded inline-flex items-center gap-1 whitespace-nowrap"><i data-lucide="alert-triangle" class="w-3 h-3"></i> Overdue</span></div>
+                                    <div class="col-span-1 text-center text-[10px] text-gray-600 font-medium">2d</div>
+                                    <div class="col-span-1 text-center text-[10px] text-red-500 font-medium whitespace-nowrap">Yesterday</div>
+                                    <div class="col-span-2 text-[10px] text-gray-500 truncate">Event app</div>
+                                    <div class="col-span-1 flex justify-end gap-1 opacity-50 group-hover:opacity-100 transition-opacity">
+                                        <div class="w-5 h-5 rounded hover:bg-gray-200 flex items-center justify-center"><i data-lucide="message-square" class="w-3 h-3 text-gray-500"></i></div>
+                                        <div class="w-5 h-5 rounded hover:bg-green-100 flex items-center justify-center"><i data-lucide="check" class="w-3 h-3 text-green-500"></i></div>
+                                        <div class="w-5 h-5 rounded hover:bg-red-100 flex items-center justify-center"><i data-lucide="trash-2" class="w-3 h-3 text-red-400"></i></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-                        <!-- Annotation Lines -->
-                        <div class="hidden md:block absolute top-20 right-[350px] w-32 border-t border-white/30"></div>
-                        <div class="hidden md:block absolute top-16 right-[480px] text-xs text-grey text-right w-40">
-                            One tap to save <br>context from inbox
-                        </div>
-
                     </div>
                 </div>
             </div>
@@ -661,11 +856,11 @@
             <div class="flex gap-8 text-sm text-grey">
                 <a href="privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a>
                 <a href="#how-it-works" class="hover:text-white transition-colors">How it works</a>
-                <a href="#" class="hover:text-white transition-colors">Contact</a>
+                <a href="mailto:sales@brilworks.com" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Contact</a>
             </div>
 
             <div class="flex items-center gap-4">
-                <a href="#" class="text-grey hover:text-white transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                <a href="https://x.com/Vikas_bril" target="_blank" rel="noopener noreferrer" class="text-grey hover:text-white transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
                 <a href="https://chromewebstore.google.com/detail/okcfkheemhlgnkigjbkamblaalkdnhbd?utm_source=item-share-cb" target="_blank" rel="noopener noreferrer" class="text-grey hover:text-white transition-colors"><i data-lucide="chrome" class="w-5 h-5"></i></a>
             </div>
         </div>
