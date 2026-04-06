@@ -159,30 +159,69 @@
             <p class="text-grey mb-12">Last updated: <span id="date"></span></p>
 
             <div class="prose max-w-none">
-                <p>At Nudge, we respect your privacy and are committed to protecting it. This Privacy Policy explains our practices regarding the collection, use, and disclosure of information that we receive through our Google Chrome extension.</p>
+                <p>At Nudge, we respect your privacy and are committed to protecting it. This Privacy Policy explains exactly what data we collect, how we use it, where it is stored, and with whom it is shared when you use our Chrome extension.</p>
 
-                <h2>1. Information We Collect</h2>
-                <p>Nudge is designed to work locally within your browser. <strong>We do not harvest, read, or sell your emails or personal messages.</strong></p>
+                <h2>1. Data We Collect</h2>
+                <p>Nudge collects only the data necessary to provide its core functionality. We <strong>never</strong> read, harvest, or transmit the content of your emails, LinkedIn messages, or WhatsApp conversations.</p>
                 <ul>
-                    <li><strong>Local Data:</strong> To set reminders, the extension stores basic metadata locally in your browser (e.g., thread URLs, designated follow-up times, and basic notification context).</li>
-                    <li><strong>Sync Data:</strong> If you are signed into Chrome sync, Chrome syncs your settings and reminders across your devices according to Google's Privacy Policy. </li>
-                    <li><strong>Analytics:</strong> We may collect anonymous, aggregated usage data (such as how many reminders are created daily) to improve extension performance, but this is never tied to personally identifiable information.</li>
+                    <li><strong>Task metadata:</strong> Contact name, task description, reminder date/time, conversation URL, CRM pipeline stage, completion status, and timestamps — entered by you when saving a task.</li>
+                    <li><strong>Account information (authenticated users):</strong> Firebase Authentication user ID (UID) and ID token, obtained when you sign in with Google or email/password via Firebase.</li>
+                    <li><strong>Installation ID (guest users):</strong> A randomly generated identifier stored locally to associate your tasks before you sign in.</li>
+                    <li><strong>Settings:</strong> Your in-extension preferences (e.g., owner name, pipeline configuration).</li>
+                    <li><strong>Internal debug logs:</strong> Timestamped event logs (e.g., sync success/failure) stored locally in <code>chrome.storage.local</code> for troubleshooting. These are never transmitted automatically.</li>
                 </ul>
 
-                <h2>2. How We Use Information</h2>
-                <p>We use the locally stored data exclusively to provide the core functionality of the extension—reminding you to follow up on specific conversations at the times you designate. We do not use your information for advertising or lead generation.</p>
+                <h2>2. How We Use Your Data</h2>
+                <ul>
+                    <li>To create, display, and manage your follow-up tasks and reminders.</li>
+                    <li>To trigger Chrome desktop notifications at your chosen reminder times via Chrome Alarms API.</li>
+                    <li>To sync your tasks and settings across devices when you are signed in (via Firebase/Firestore).</li>
+                    <li>To merge guest tasks into your account upon sign-in, if you choose to do so.</li>
+                    <li>To display your tasks in the CRM-style dashboard and pipeline views.</li>
+                </ul>
+                <p>We do not use your data for advertising, profiling, or any purpose beyond operating the extension.</p>
 
-                <h2>3. Third-Party Access</h2>
-                <p>Nudge interacts with third-party websites (like Gmail, LinkedIn, and WhatsApp) strictly to generate the direct links to your conversations. We do not transmit your data to external servers, nor do we sell, trade, or rent your personal information to third parties.</p>
+                <h2>3. Data Storage</h2>
+                <ul>
+                    <li><strong>Local storage:</strong> Tasks, settings, installation ID, alarm index, and debug logs are stored in <code>chrome.storage.local</code> on your device.</li>
+                    <li><strong>Cloud storage (authenticated users):</strong> Tasks and settings are synced to and stored in <strong>Google Firebase Firestore</strong> (project: <code>task-crm-edf17</code>), a cloud database operated by Google LLC. Data is stored under a document keyed to your Firebase UID.</li>
+                    <li><strong>Cloud storage (guest users):</strong> Tasks and settings are stored only in <code>chrome.storage.local</code> on your device. No data is written to Firestore for guest sessions.</li>
+                </ul>
 
-                <h2>4. Data Security</h2>
-                <p>Because your reminder data is stored locally in your browser storage or via Chrome Sync, it is secured by Google's native browser security mechanisms. We implement best practices in our extension permissions, ensuring we only request access to the specific URLs required to provide our service.</p>
+                <h2>4. Data Sharing</h2>
+                <p>We share your data only as described below. We do not sell, rent, or trade your personal information.</p>
+                <ul>
+                    <li><strong>Google Firebase / Firestore (Google LLC):</strong> Authenticated users' task data and settings are stored in Firestore and processed by Google's infrastructure. Firebase Authentication tokens are exchanged with Google's Identity Toolkit and Secure Token Service APIs. Google's use of this data is governed by the <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer" class="text-indigo hover:text-violet transition-colors">Firebase Privacy Policy</a>.</li>
+                    <li><strong>No other third parties:</strong> We do not share your data with any other third-party services, analytics providers, advertisers, or data brokers.</li>
+                </ul>
 
-                <h2>5. Changes to This Privacy Policy</h2>
-                <p>We may update this Privacy Policy from time to time. We will notify you of any changes by updating the "Last updated" date of this Privacy Policy and, depending on the significance of the changes, we may provide a more prominent notice.</p>
+                <h2>5. Permissions and Website Access</h2>
+                <p>Nudge requests access to the following sites solely to inject the "Save as Task" button and read the current conversation URL — no message content is read or transmitted:</p>
+                <ul>
+                    <li>linkedin.com/messaging</li>
+                    <li>mail.google.com</li>
+                    <li>outlook.live.com and outlook.office.com</li>
+                    <li>web.whatsapp.com</li>
+                </ul>
+                <p>The extension also uses <strong>Chrome storage</strong>, <strong>Chrome alarms</strong>, <strong>Chrome notifications</strong>, and <strong>activeTab</strong> permissions to deliver reminders and manage tasks.</p>
 
-                <h2>6. Contact Us</h2>
-                <p>If you have any questions or concerns about this Privacy Policy or our practices, please contact us at <a href="mailto:sales@brilworks.com" class="text-indigo hover:text-violet transition-colors">sales@brilworks.com</a>.</p>
+                <h2>6. Data Retention and Deletion</h2>
+                <ul>
+                    <li>Local data is retained until you uninstall the extension or manually clear it from the dashboard.</li>
+                    <li>Cloud data (Firestore) is retained until you delete your account or request deletion by contacting us at <a href="mailto:sales@brilworks.com" class="text-indigo hover:text-violet transition-colors">sales@brilworks.com</a>. We will delete your Firestore document within 30 days of a verified request.</li>
+                </ul>
+
+                <h2>7. Data Security</h2>
+                <p>All communication with Firebase/Firestore is encrypted in transit via HTTPS. Access to your Firestore data is protected by Firebase Authentication — only your authenticated session can read or write your profile document. We request only the minimum permissions required to operate the extension.</p>
+
+                <h2>8. Children's Privacy</h2>
+                <p>Nudge is not directed at children under 13. We do not knowingly collect personal information from children under 13.</p>
+
+                <h2>9. Changes to This Privacy Policy</h2>
+                <p>We may update this Privacy Policy from time to time. We will notify you of material changes by updating the "Last updated" date above. Continued use of the extension after changes constitutes acceptance of the updated policy.</p>
+
+                <h2>10. Contact Us</h2>
+                <p>If you have any questions, requests to access or delete your data, or concerns about this Privacy Policy, please contact us at <a href="mailto:sales@brilworks.com" class="text-indigo hover:text-violet transition-colors">sales@brilworks.com</a>.</p>
             </div>
         </div>
     </main>
